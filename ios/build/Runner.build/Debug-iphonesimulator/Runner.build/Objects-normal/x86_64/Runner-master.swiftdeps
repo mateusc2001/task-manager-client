@@ -1,0 +1,6 @@
+version: "Apple Swift version 5.7 (swiftlang-5.7.0.127.4 clang-1400.0.29.50)"
+options: "a223e23b5659a227934c2055d3f2bfe483d5e7a8e246156a35766ca5a62474e3"
+build_start_time: [1664079329, 436821937]
+build_end_time: [1664079331, 698018074]
+inputs:
+  "/Users/mateus-mac/StudioProjects/task_manager/ios/Runner/AppDelegate.swift": [1663155098, 0]
