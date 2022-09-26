@@ -1,0 +1,4 @@
+
+
+const MOBILE_WIDTH = 600;
+const DESKTOP_WIDTH = 600;
