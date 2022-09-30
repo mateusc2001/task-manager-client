@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:task_manager/constants/api.env.dart';
 import 'package:task_manager/main.dart';
 import 'package:task_manager/model/task_model.dart';
 import 'package:task_manager/screen/util/dialog_box.dart';
@@ -26,7 +27,7 @@ class _MobileBodyState extends State<MobileBody> {
   }
 
   getAllTasks() async {
-    final response = await http.get(Uri.parse('$SERVER_IP/task'));
+    final response = await http.get(Uri.parse('${ApiEnvConstants.baseUrl}/task'));
     List jsonResponse = json.decode(response.body);
     setState(() {
       tasks = [];
@@ -55,12 +56,12 @@ class _MobileBodyState extends State<MobileBody> {
   }
 
   Future<http.Response> updateTaskAsDone(taskId, bool? status) {
-    final url = '$SERVER_IP/task/' + taskId;
+    final url = '${ApiEnvConstants.baseUrl}/task/' + taskId;
     return http.put(Uri.parse(url), body: {"done": status.toString()});
   }
 
   createNewTaskRestClient() async {
-    final url = '$SERVER_IP/task';
+    final url = '${ApiEnvConstants.baseUrl}/task';
     final result = await http
         .post(Uri.parse(url), body: {"title": newTaskController.text});
     final responseJson = json.decode(result.body);
@@ -85,7 +86,7 @@ class _MobileBodyState extends State<MobileBody> {
 
   deleteTask(taskId) async {
     http
-        .delete(Uri.parse('$SERVER_IP/task/' + taskId))
+        .delete(Uri.parse('${ApiEnvConstants.baseUrl}/task/' + taskId))
         .then((value) => getAllTasks());
   }
 
@@ -107,9 +108,12 @@ class _MobileBodyState extends State<MobileBody> {
           var task = tasks[index];
           return ToDoTile(
               taskModel: task,
+              users: [],
+              reloadTasks: (_) {},
               action: (status) => setAsDone(status, task.id),
               deleteAction: (context) => deleteTask(task.id),
-              updateAction: (context) => createNewTask());
+              updateAction: (context) => createNewTask(),
+              deleteAssignedAction: () {});
         }),
       ),
       floatingActionButton: FloatingActionButton(

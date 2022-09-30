@@ -4,6 +4,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
+import 'package:task_manager/constants/api.env.dart';
 import 'package:task_manager/constants/constants.dart';
 import 'package:task_manager/main.dart';
 import 'package:task_manager/screen/home_page.dart';
@@ -44,7 +45,7 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   Future attemptLogIn(String username, String password) async {
-    var res = await http.post(Uri.parse('$SERVER_IP/auth/login'),
+    var res = await http.post(Uri.parse('${ApiEnvConstants.baseUrl}/auth/login'),
         body: {"username": username, "password": password});
     if (res.statusCode < 400) return res.body;
     return null;
@@ -52,7 +53,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   Future<int> attemptSignUp(String username, String password) async {
     // var res = await http.post(
-    //     Uri.parse('$SERVER_IP/signup'),
+    //     Uri.parse('${ApiEnvConstants.baseUrl}/signup'),
     //     body: {
     //       "username": username,
     //       "password": password
@@ -68,7 +69,7 @@ class _LoginScreenState extends State<LoginScreen> {
       );
 
   Future<http.Response> login(username, password) {
-    return http.post(Uri.parse('http://localhost:3000/auth/login'),
+    return http.post(Uri.parse('${ApiEnvConstants.baseUrl}/auth/login'),
         body: {"username": username, "password": password});
   }
 
@@ -337,7 +338,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       const Text(
-                        'Entrar',
+                        'Sign in',
                         style: TextStyle(
                           color: Colors.white,
                           fontFamily: 'OpenSans',
