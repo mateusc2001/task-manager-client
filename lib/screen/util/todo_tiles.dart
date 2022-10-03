@@ -43,7 +43,7 @@ class _ToDoTileState extends State<ToDoTile> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
+        padding: const EdgeInsets.fromLTRB(15, 15, 15, 0),
         child: Slidable(
           startActionPane: ActionPane(
             motion: StretchMotion(),
@@ -71,7 +71,7 @@ class _ToDoTileState extends State<ToDoTile> {
 
   Container card(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(24),
+      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 0),
       decoration: BoxDecoration(
           color: Theme.of(context).primaryColor,
           borderRadius: BorderRadius.circular(2)),

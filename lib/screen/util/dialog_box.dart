@@ -19,7 +19,7 @@ class DialogBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      backgroundColor: Colors.black45,
+      backgroundColor: Color.fromRGBO(40, 40, 40, 1),
       title: Text(taskModel != null ? 'Editando tarefa' : 'Nova tarefa',
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.w300)),
       content: Container(
@@ -34,7 +34,6 @@ class DialogBox extends StatelessWidget {
                 color: Colors.white,
               ),
               decoration: InputDecoration(
-                  border: OutlineInputBorder(),
                   hintText: "Descrição da tarefa",
                   hintStyle: TextStyle(color: Colors.grey)),
             ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:task_manager/screen/CustomAppBar.dart';
+import 'package:task_manager/screen/home_page.dart';
 import 'package:task_manager/screen/login_screen.dart';
 
 void main() => runApp(MyApp());
@@ -15,6 +16,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
           primarySwatch: Colors.purple,
+          scaffoldBackgroundColor: Color.fromRGBO(40, 40, 40, 1),
           textTheme: TextTheme(
             headline1: TextStyle(color: Colors.white),
             headline2: TextStyle(color: Colors.red),
@@ -26,4 +28,3 @@ class MyApp extends StatelessWidget {
   }
 }
 
-final storage = FlutterSecureStorage();

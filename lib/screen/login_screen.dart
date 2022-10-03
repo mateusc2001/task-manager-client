@@ -34,7 +34,6 @@ class _LoginScreenState extends State<LoginScreen> {
     if (jwt != null) {
       final responseBodyJson = json.decode(jwt);
       final token = responseBodyJson['access_token'];
-      storage.write(key: "jwt", value: token);
 
       Navigator.push(
           context, MaterialPageRoute(builder: (context) => HomePage()));
